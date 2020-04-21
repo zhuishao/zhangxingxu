@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>132-0803-3621(短横线需要过滤)</p>
+<p>132-0803-3621@qq.com(短横线不能过滤)</p>
+<form id="form">
+    <input id="input" type="email" placeholder="邮箱或密码">
+</form>
+<script>
+    function telTrim(str) {
+        if(typeof str === 'string'&&str.match(/[^\-\s]/g).length===11){
+            return str.replace(/[\s\-]/g,'')
+        } else{
+            return str;
+        }
+    }
+    const form = document.getElementById('form');
+    const input = document.getElementById('input');
+
+    input.addEventListener('drop',function(ev){
+        ev.preventDefault();
+        var text = ev.dataTransfer.getData('text');
+        this.value = telTrim(text);
+    })
+
+    input.addEventListener('paste',function(ev){
+        ev.preventDefault();
+        var text = ev.clipboardData.getData('text');
+        this.value = telTrim(text);
+    })
+
+    form.addEventListener('submit',function(ev){
+        ev.preventDefault();
+        input.value = telTrim(input.value);
+    })
+</script>
+</body>
+</html>

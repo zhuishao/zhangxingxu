@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .grid{
+            display: grid;
+            grid-auto-flow:column ;
+            grid-template: repeat(2, 1fr)/2fr 1fr 1fr;
+            grid-gap: 6px;
+            grid-template-areas: "a b d" "a c e";
+        }
+        .grid :first-child{
+            grid-area: a;
+        }
+        .item img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="grid">
+    <div class="item">
+        <img src="../asserts/img/0.png">
+    </div>
+    <div class="item">
+        <img src="../asserts/img/0.png">
+    </div>
+    <div class="item">
+        <img src="../asserts/img/0.png">
+    </div>
+    <div class="item">
+        <img src="../asserts/img/0.png">
+    </div>
+    <div class="item">
+        <img src="../asserts/img/0.png">
+    </div>
+</div>
+</body>
+</html>

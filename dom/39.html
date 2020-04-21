@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            scroll-behavior: smooth;
+        }
+        .img-x{
+            width: calc(33.3% - calc(100vw - 100%) / 3);
+        }
+        .dialog{
+            position: relative;
+        }
+        .btn-x{
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            outline: none;
+            background-color: unset;
+            border: none;
+        }
+        .img-large{
+        }
+    </style>
+</head>
+<body>
+<div id="imgContainer">
+    <img class="img-x" src="../asserts/img/0.png">
+    <img class="img-x" src="../asserts/img/1.png">
+    <img class="img-x" src="../asserts/img/2.png">
+    <img class="img-x" src="../asserts/img/2.png">
+</div>
+<script>
+    const dialog = document.createElement('dialog');
+    dialog.classList.add('dialog');
+    const img = document.createElement('img');
+    const btn = document.createElement('button');
+    img.classList.add('img-large')
+    btn.classList.add('btn-x');
+    btn.textContent='X';
+    btn.addEventListener('click', ()=>{
+        dialog.close();
+    })
+    dialog.appendChild(btn);
+    dialog.appendChild(img);
+    document.body.appendChild(dialog);
+    let dom;
+    [].slice.call(document.querySelectorAll('img[src]')).forEach(el => {
+        el.addEventListener('click',(ev) => {
+            console.log(ev.target.src);
+            img.src = ev.target.src;
+            dialog.showModal();
+            ev.stopPropagation();
+        })
+        el.ondragstart = function (ev) {
+            console.log('start',ev);
+            dom = ev.target;
+        }
+        el.ondragenter = function (ev) {
+            ev.target.style.setProperty('outline', 'dotted red');
+        }
+        el.ondragover = function (ev) {
+            ev.preventDefault();
+        }
+        el.ondragleave = function(ev) {
+            ev.target.style.removeProperty('outline');
+        }
+        el.addEventListener('drop',function (ev) {
+            console.log('drop',ev.target,dom);
+            if (ev.target === dom) {
+                ev.target.style.removeProperty('outline');
+                return;
+            }
+            const temp = document.createElement('img');
+            imgContainer.replaceChild(temp,ev.target);
+            imgContainer.replaceChild(ev.target,dom);
+            imgContainer.replaceChild(dom,temp);
+            console.log(imgContainer.childNodes);
+            [].slice.call(document.querySelectorAll('.img-x')).forEach(item => {
+                item.style.removeProperty('outline');
+            })
+        })
+    });
+    window.addEventListener('click',()=>{
+        dialog.close();
+    })
+</script>
+</body>
+</html>

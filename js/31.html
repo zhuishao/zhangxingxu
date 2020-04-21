@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function rnd(seed) {
+        seed = (seed*9301+49297)%233280;
+        return seed/(233280.0);
+    }
+    const arr = [{skin:1},{skin:2},{skin:3},{skin:4},{skin:5},{skin:6},{skin:7},{skin:8},{skin:9},{skin:10}];
+    const user = 2221;
+    const randomArr = rnd(user).toString().replace(/^../,'').match(/./g).map(x=>parseInt(x,10));
+    for (let i=0 ;i< randomArr.length ; i++){
+        arr.unshift(...arr.splice(randomArr[i],1));
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li.selected {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<input id="input">
+<ul id="list">
+    <li>列表1</li>
+    <li>列表2</li>
+    <li>列表3</li>
+</ul>
+<script>
+    const items = [].slice.call(list.children);
+    items.forEach(el => {
+        el.addEventListener('click',function(ev) {
+            input.value = ev.target.textContent;
+            items.filter(item => item.classList.contains('selected')).forEach(item => item.classList.remove('selected'));
+            ev.target.classList.add('selected');
+        })
+    })
+    window.addEventListener('keydown', (ev) => {
+        if (ev.key !== 'ArrowUp' && ev.key !== 'ArrowDown') {
+            return;
+        }
+        const selectedItem = [].slice.call(document.querySelectorAll('li')).find(item => item.matches('.selected'));
+        if(!selectedItem) {
+            switch (ev.key) {
+                case 'ArrowUp':
+                    list.lastElementChild.classList.add('selected');
+                    input.value = list.lastElementChild.textContent;
+                    break;
+                case 'ArrowDown':
+                    list.firstElementChild.classList.add('selected');
+                    input.value = list.firstElementChild.textContent;
+                    break;
+                default:
+            }
+        } else {
+            selectedItem.classList.remove('selected');
+            switch (ev.key) {
+                case 'ArrowUp':
+                    if (selectedItem.previousElementSibling) {
+                        selectedItem.previousElementSibling.classList.add('selected');
+                        input.value = selectedItem.previousElementSibling.textContent;
+                    } else {
+                        list.lastElementChild.classList.add('selected');
+                        input.value = list.lastElementChild.textContent;
+                    }
+                    break;
+                case 'ArrowDown':
+                    if (selectedItem.nextElementSibling) {
+                        selectedItem.nextElementSibling.classList.add('selected');
+                        input.value = selectedItem.nextElementSibling.textContent;
+                    } else {
+                        list.firstElementChild.classList.add('selected');
+                        input.value = list.firstElementChild.textContent;
+                    }
+                    break;
+                default:
+            }
+        }
+    })
+</script>
+</body>
+</html>

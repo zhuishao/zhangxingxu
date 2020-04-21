@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 获取所有的a元素
+    const a = document.links;
+    // 获取所有的链接元素
+    const links = document.querySelectorAll('[href]');
+    [].slice.call(links).forEach(item => {
+        const href = item.getAttribute('href');
+        if (href.startsWith('javascript')){
+            item.setAttribute('role','button');
+        } else if(href!=='#'&&href!==location.href){
+            item.setAttribute('target','_blank');
+            item.relList.add('external','nofollow', 'noopener');
+        } else if(href.startsWith('#')){
+            item.setAttribute('rel','internal')
+        }
+    })
+</script>
+</body>
+</html>

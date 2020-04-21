@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html{
+            scroll-behavior: smooth;
+        }
+        .help-height{
+            height: 300vh;
+        }
+        .hidden{
+            visibility: hidden;
+        }
+        .backTop{
+            position: fixed;
+            right: 20px;
+            bottom: 40px;
+        }
+
+    </style>
+</head>
+<body>
+<!-- 当容器是html的时候 -->
+<a
+    class="backTop hidden"
+    id="backTop"
+    href="#"
+>
+    返回顶部
+</a>
+<div class="help-height"></div>
+<!--</div>-->
+<script>
+    window.addEventListener('scroll',()=>{
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const clientHeight = window.innerHeight || document.documentElement.clientHeight;
+        const backTop = document.getElementById('backTop');
+        if (scrollTop > clientHeight) {
+            backTop.className = 'backTop';
+        } else {
+            backTop.className = 'backTop hidden'
+        }
+    })
+</script>
+</body>
+</html>

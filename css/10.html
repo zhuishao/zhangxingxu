@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .menu{
+            width: 155px;
+            border-right: 1px solid rgb(232,232,232);
+            border-left: 1px solid rgb(232,232,232);
+            font-size: 14px;
+            color: rgba(0,0,0,.65);
+        }
+        .submenu summary:focus{
+            outline: 0;
+        }
+        .submenu ::-webkit-details-marker{
+            display: none;
+        }
+        .submenu ::-moz-list-bullet{
+            font-size: 0;
+        }
+        .submenu summary{
+            padding-left: .8em;
+            position: relative;
+            font-weight: bold;
+            color: rgb(75,78,87);
+            cursor: pointer;
+            line-height: 40px;
+            transition: color .2s .1s;
+        }
+        .submenu summary:hover{
+            color: #00afff;
+        }
+        .submenu summary::before{
+            position: absolute;
+            right: 1em;
+            content: '';
+            height: .1em;
+            border-style: solid;
+            border-width: 0 .2em;
+            border-radius: 100px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            transform: rotate(40deg);
+            transition: all .3s;
+          }
+        .submenu summary::after{
+            position: absolute;
+            right: .72em;
+            content: '';
+            height: .1em;
+            border-style: solid;
+            border-width: 0 .2em;
+            border-radius: 100px;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            transform: rotate(-40deg);
+            transition: all .3s;
+        }
+        .submenu[open]>summary::before{
+            transform: rotate(-40deg);
+        }
+        .submenu[open]>summary::after{
+            transform: rotate(40deg);
+        }
+        .submenu ul{
+            list-style: none;
+        }
+        .submenu>ul{
+            padding: 0;
+            margin: 0;
+        }
+        .submenu li{
+            position: relative;
+            color: inherit;
+            line-height: 40px;
+            text-indent: 2em;
+            cursor: pointer;
+            transition: all .2s .1s;
+        }
+        .txt:hover{
+            color: #00afff;
+        }
+        .submenu li li{
+            text-indent: 4em;
+        }
+        .menu-radio{
+            position: absolute;
+            cursor: pointer;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+        .txt{
+            color: inherit;
+            transition: all .2s .1s;
+        }
+        .menu-radio:hover ~ .txt{
+
+            color: rgb(24,144,255);
+        }
+        :checked ~ .txt{
+            background-color: rgb(230,247,255);
+            color: rgb(24,144,255);
+        }
+    </style>
+</head>
+<body>
+<div class="menu">
+    <details class="submenu">
+        <summary>菜单</summary>
+        <ul>
+            <li>
+                <input type="radio" name="m" class="menu-radio">
+                <div class="txt">啥</div>
+            </li>
+            <li>
+                <input type="radio" name="m" class="menu-radio">
+                <div class="txt">啥</div>
+            </li>
+            <li>
+                <input type="radio" name="m" class="menu-radio">
+                <div class="txt">啥</div>
+            </li>
+            <li>
+                <input type="radio" name="m" class="menu-radio">
+                <div class="txt">啥</div>
+            </li>
+        </ul>
+    </details>
+    <details class="submenu">
+        <summary>菜单</summary>
+        <ul>
+            <li>
+                <input type="radio" name="m" class="menu-radio">
+                <div class="txt">啥</div>
+            </li>
+            <li>
+                <input type="radio" name="m" class="menu-radio">
+                <div class="txt">啥</div>
+            </li>
+            <li>
+                <input type="radio" name="m" class="menu-radio">
+                <div class="txt">啥</div>
+            </li>
+            <li>
+                <input type="radio" name="m" class="menu-radio">
+                <div class="txt">啥</div>
+            </li>
+            <li>
+                <details class="submenu">
+                    <summary>菜单</summary>
+                    <ul>
+                        <li>
+                            <input type="radio" name="m" class="menu-radio">
+                            <div class="txt">啥</div>
+                        </li>
+                        <li>
+                            <input type="radio" name="m" class="menu-radio">
+                            <div class="txt">啥</div>
+                        </li>
+                        <li>
+                            <input type="radio" name="m" class="menu-radio">
+                            <div class="txt">啥</div>
+                        </li>
+                        <li>
+                            <input type="radio" name="m" class="menu-radio">
+                            <div class="txt">啥</div>
+                        </li>
+                    </ul>
+                </details>
+            </li>
+        </ul>
+    </details>
+</div>
+</body>
+</html>

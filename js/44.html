@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const arrRGBA = [255,255,255,255,255,255,0,255];
+    const fn = function (arr, avg) {
+        for (let i=0 ;i<=arr.length-4;i += 4) {
+            let spliceArr = arr.splice(i,4);
+            let [a,b,c,d] = spliceArr;
+            arr.splice(i,0,a-avg,b-avg,c-avg,d-avg);
+        }
+        return arr;
+    }
+    console.log(fn(arrRGBA,4));
+</script>
+</body>
+</html>

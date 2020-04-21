@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        textarea{
+            line-height: 20px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    const txt = document.createElement('textarea');
+
+    txt.setAttribute('rows',15)
+
+    document.addEventListener('DOMNodeInserted', function (e) {
+        if(e.target.nodeName.toLowerCase() === 'textarea'){
+            const style = window.getComputedStyle(e.target)
+            const _lh = style.lineHeight;
+            const rows = txt.getAttribute('rows');
+
+            txt.style.setProperty('height',`calc(${_lh} * ${rows})`);
+        }
+    })
+</script>
+</body>
+</html>

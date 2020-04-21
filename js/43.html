@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>去数组去重</title>
+</head>
+<body>
+<script>
+    let data = [
+        {
+            id: 1,
+            name: '张三',
+            value: '技术部'
+        },
+        {
+            id: 2,
+            name: '王一',
+            value: '技术部'
+        },
+        {
+            id: 3,
+            name: '赵四',
+            value: '客服部'
+        },
+        {
+            id: 4,
+            name: '二狗',
+            value: '产品部'
+        },
+        {
+            id: 5,
+            name: '李五',
+            value: '产品部'
+        }
+    ];
+    Array.from(new Set(data.map(item => item.value)))
+</script>
+</body>
+</html>

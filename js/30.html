@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const content = '   是囖 s;dlflaflkjsdlkf,m.ljlkwemf,mskwlef,.dmflwkeflka,mdflkwlkad,flwkejf.,sdmlfaelk,.dsgmlwkef,.sdmfkwelmf.,dmlfkwef,smlfkelkfs;dlflaflkjsdlkf,m.ljlkwemf,mskwlef,.dmflwkeflka,mdflkwlkad,flwkejf.,sdmlfaelk,.dsgmlwkef,.sdmfkwelmf.,dmlfkwef,smlfkelkfs;dlflaflkjsdlkf,m.ljlkwemf,mskwlef,.dmflwkeflka,mdflkwlkad,flwkejf.,sdmlfaelk,.dsgmlwkef,.sdmfkwelmf.,dmlfkwef,smlfkelkfs;dlflaflk  jsdlkf,m.ljlkwemf,m\nskwlef,.dmflwkeflka,mdflkwlkad,flwkejf.,sdmlfaelk,.dsgmlwkef,.sdmfkwelmf.,dmlfkwef,smlfkelkf   ';
+    debugger;
+    String.prototype.overLength = function (len) {
+        if (typeof len !== 'number'){
+            return new Error('非数字')
+        }
+        return Math.ceil(this.trim().replace(/\s+/g,' ').length/2) > len;
+    }
+    console.log(content.overLength(400));
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .nav{
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            grid-gap: 1px;
+            overflow: hidden;
+            background-color: rgb(82,73,64);
+        }
+        .nav-item{
+            height: 160px;
+            margin: -1px;
+            border-radius: 20px;
+            overflow: hidden;
+            color: white;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-item::before{
+            position: absolute;
+            content: '';
+            top:0;
+            left: 0;
+            right: 0;
+            bottom:0;
+            box-shadow: 0 0 0 1px inset currentColor;
+            pointer-events: none;
+        }
+        .nav-item:hover{
+            color: gold;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<ul class="nav">
+    <li class="nav-item">追</li>
+    <li class="nav-item">少</li>
+    <li class="nav-item">N</li>
+    <li class="nav-item">B</li>
+    <li class="nav-item">啊</li>
+    <li class="nav-item">啊</li>
+    <li class="nav-item">啊</li>
+    <li class="nav-item">啊</li>
+</ul>
+</body>
+</html>

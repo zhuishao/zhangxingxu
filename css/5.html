@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .x{
+            margin: 20px;
+            padding: 20px;
+            border:1px solid #ccc;
+            display: grid;
+            grid-template-columns: repeat(5, calc((100vw - 4rem - 82px) / 5));
+            grid-template-rows: auto auto;
+            grid-gap: 1rem;
+        }
+        .x-item{
+            background-color: #00afff;
+            height: calc((100vw - 4rem - 82px) / 5)
+        }
+        .x-item.active{
+            box-shadow: 0 0 0 4px black;
+        }
+    </style>
+</head>
+<body>
+<div class="x">
+    <a href="javascript:" class="x-item"></a>
+    <a href="javascript:" class="x-item"></a>
+    <a href="javascript:" class="x-item"></a>
+    <a href="javascript:" class="x-item"></a>
+    <a href="javascript:" class="x-item"></a>
+    <a href="javascript:" class="x-item active"></a>
+    <a href="javascript:" class="x-item"></a>
+    <a href="javascript:" class="x-item"></a>
+    <a href="javascript:" class="x-item"></a>
+</div>
+</body>
+</html>

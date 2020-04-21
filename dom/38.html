@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [type=radio]:invalid{
+            outline: 3px solid red;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="removeDisabled" value="全部都可用">
+<input type="radio" value="1" name="bookName" required>牧神记
+<input type="radio" value="2" name="bookName" disabled>放开那条龙
+<input type="radio" value="3" name="bookName">重生之扫地僧
+<fieldset disabled>
+    <input type="radio" value="ba1" name="bookAuthor">宅猪
+    <input type="radio" value="ba2" name="bookAuthor" checked>西红柿
+    <input type="radio" value="ba3" name="bookAuthor">莫默
+</fieldset>
+<script>
+    //1获取所有匹配required必选的单选框元素
+    const req = document.querySelectorAll(':required')
+    //2获取所有匹配disabled禁用态的单选框元素
+    const dis = document.querySelectorAll('[type=radio]:disabled')
+    //3获取所有匹配checked选中态的单选框元素
+    const che = document.querySelectorAll('[type=radio]:checked')
+    //4获取id为removeDisabled的按钮元素，点击该按钮，移除所有的单选框元素的disabled禁用态
+    const button = document.getElementById('removeDisabled')
+    button.addEventListener('click', function () {
+        dis.forEach(item => {
+            item.disabled = false;
+        });
+    })
+    //5设置此时验证不合法的单选框元素的outline颜色为3px红色虚线
+</script>
+</body>
+</html>

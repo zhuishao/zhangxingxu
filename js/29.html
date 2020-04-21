@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //比较数组
+    function equalArray(arr1,arr2,cb){
+        if(arr1.length!=arr2.length){
+            return false;
+        }
+        return arr1.every(function(el,i){
+            if(cb){
+                return cb(i);
+            }
+            return el === arr2[i]
+        })
+    }
+
+    //比较对象
+    function equalObject(obj1,obj2,cb){
+        var aProps = Object.getOwnPropertyNames(obj1);
+        var bProps = Object.getOwnPropertyNames(obj2);
+        if (aProps.length !== bProps.length) {
+            return false;
+        }
+        return aProps.every(function(props){
+            if(cb){
+                return cb(props);
+            }
+            return obj1[props] === obj2[props]
+        })
+    }
+
+    function getType(obj){
+        return Object.prototype.toString.call(obj).replace(/\[object (\w+)\]/,"$1");
+    }
+
+    //比较任意类型
+    function equal(a,b){
+        var typeA = getType(a);
+        var typeB = getType(b);
+        if(typeA !== typeB){
+            return false;
+        }
+        if(typeA === 'Array'){
+            return equalArray(a,b,function(index){
+                return equal(a[index],b[index]);
+            })
+        }else if(typeA === 'Object'){
+            return equalObject(a,b,function(props){
+                return equal(a[props],b[props]);
+            })
+        }else{
+            return a === b;
+        }
+    }
+    var a = {a:1,b:{c:12,d:[1,{e:1}]}}
+    var b = {a:1,b:{c:12,d:[1,{e:1}]}}
+    var c = {a:1,b:{c:12,d:[1,{e:2}]}}
+    equal(a,b) //true
+    equal(a,c) //false
+</script>
+</body>
+</html>

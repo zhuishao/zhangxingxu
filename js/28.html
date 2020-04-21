@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = [0,1,2,3,4,5];
+    Array.prototype.swap = function (i,j) {
+        if (typeof i !== 'number' || typeof j !== 'number') {
+            return new Error('传入非数字');
+        }
+        if (i<0||i>=this.length||j<0||j>=this.length) {
+            return new Error('下标超限');
+        }
+        const temp = this[i];
+        this[i] = this[j];
+        this[j] = temp;
+    }
+    Array.prototype.moveIndextoPre = function (i) {
+        this.swap(i,i-1);
+    }
+    Array.prototype.moveIndextoStart = function (i) {
+        this.swap(i,0);
+    }
+    Array.prototype.moveIndextoEnd = function (i) {
+        this.swap(i,this.length-1);
+    }
+
+</script>
+</body>
+</html>

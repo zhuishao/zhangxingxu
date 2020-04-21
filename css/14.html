@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .nav{
+            display: flex;
+            list-style-type: none;
+            margin:0;
+            padding: 0 40px;
+            counter-reset: listCount;
+        }
+        .nav-item{
+            flex: 1;
+            position: relative;
+        }
+        .nav-item{
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            background-color: rgb(237,249,255);
+            counter-increment: listCount;
+        }
+        .nav-item>a::before{
+            content: counter(listCount) "-";
+        }
+        .nav-item.active{
+            background-color: #00afff;
+        }
+        .nav-item.active ~ .nav-item{
+            background-color: gray;
+        }
+        .nav-item:first-child{
+            clip-path: polygon(0 0, calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%);
+        }
+        .nav-item:not(:first-child) {
+            margin-left: -12px;
+        }
+        .nav-item:not(:first-child){
+            clip-path: polygon(0 0, calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%,16px 50%);
+        }
+    </style>
+</head>
+<body>
+<ul class="nav">
+    <li class="nav-item">
+        <a href="javascript:">规则说明</a>
+    </li>
+    <li class="nav-item">
+        <a href="javascript:">规则说明</a>
+    </li>
+    <li class="nav-item active">
+        <a href="javascript:">规则说明</a>
+    </li>
+    <li class="nav-item">
+        <a href="javascript:">规则说明</a>
+    </li>
+    <li class="nav-item">
+        <a href="javascript:">规则说明</a>
+    </li>
+</ul>
+</body>
+</html>

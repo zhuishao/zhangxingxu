@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .A{
+            height: 1000px;
+            background-color: #00afff;
+        }
+        .B{
+            margin:0 40px;
+            background-color: gold;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="A"></div>
+<div class="B">
+    <p>23</p>
+    <p>23</p>
+    <p>23</p>
+</div>
+<script>
+    const dom = document.querySelector('.B');
+    dom.style.marginTop = `-${dom.offsetHeight/2}px`
+</script>
+</body>
+</html>
